@@ -1,0 +1,34 @@
+{
+  "$id": "https://example.com/buttonViz.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "buttonViz",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nom de la visualisation"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description de la visualisation"
+    },
+    "icon": {
+      "$ref" : "http://localhost/SimpleGIS/src/files/schemas/markerStyle.json",
+      "description": "Icône de la visualisation (afficher dans l'interface)"
+    },
+    "sources": {
+      "type": "array",
+      "description": "Liste des références des sources à afficher lorsque la visualisation est active",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sourcesOSM": {
+      "type": "array",
+      "description": "Liste des références des sources OSM à afficher lorsque la visualisation est active",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

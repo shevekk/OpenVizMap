@@ -1,0 +1,29 @@
+{
+  "$id": "https://example.com/popup.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "popup",
+  "type": "object",
+  "properties": {
+    "props": {
+      "type": "array",
+      "description": "Tableau des propriétés affichées",
+      "items": {
+        "type": "string"
+      }
+    },
+    "bolds": {
+      "type": "array",
+      "description": "Tableau des propriétés en gras (Que si dans la liste des prop affichées)'",
+      "items": {
+        "type": "string"
+      }
+    },
+    "italics": {
+      "type": "array",
+      "description": "Tableau des propriétés en italique (Que si dans la liste des prop affichées)'",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

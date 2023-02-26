@@ -1,0 +1,20 @@
+{
+  "$id": "https://example.com/markerStyle.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "markerStyle",
+  "type": "object",
+  "properties": {
+    "color": {
+      "type": "string",
+      "description": "Couleur en rgb ou hexa"
+    },
+    "icon": {
+      "$ref" : "http://localhost/SimpleGIS/src/files/schemas/icon.json",
+      "description": "Paramètres de l'icône du marker"
+    },
+    "size": {
+      "type": "array/number",
+      "description": "Taille de l'icône sous frome de nombre si type='font' ou tableau x/y si type='svg'"
+    }
+  }
+}

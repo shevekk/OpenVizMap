@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="fr" style="height: 100%;overflow: hidden;">
+    <head>
+        <script type="text/javascript" src="node_modules/leaflet/dist/leaflet.js"></script> 
+        <!-- <script src="node_modules/leaflet.fullscreen/Control.FullScreen.js"></script> -->
+
+        <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="style.css">
+
+        <link href="libs/atlas-icons/style.css" rel="stylesheet">
+
+        <link href="libs/fontawesome-free-6.2.0-web/css/all.css" rel="stylesheet">
+        <link href="libs/remixIcon-font/remixicon.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="node_modules/leaflet.fullscreen/Control.FullScreen.css" />
+        <script src="node_modules/leaflet.fullscreen/Control.FullScreen.js"></script>
+
+        <script src="node_modules/spin.js/spin.min.js" charset="utf-8"></script>
+        <script src="node_modules/leaflet-spin/leaflet.spin.min.js" charset="utf-8"></script>
+
+        <title>OpenVizMap</title>
+        <link rel="icon" type="image/png" href="img/icon.png" />
+    </head>
+    
+    <body>
+        <div id="map"></div>
+
+        <div class="popup-container-description" data-js="popup-description">
+            <div class="inner-container-description">
+              <div class="header-description"></div>
+              <div class="content-description"></div>
+              <div class="footer-description">
+                <button class="btn-description btn-close-description">Close</button>
+              </div>
+            </div>
+        </div>
+
+
+        <div class="popup-container-configuration" data-js="popup-configuration"></div>
+    </body>
+
+    <script type="text/javascript" src="libs/colorIcon/L.colorIcon.js"></script>
+
+    <script type="text/javascript" src="map/mapManager.js"></script>
+
+    <script type="text/javascript" src="control/layersSelect.js"></script>
+    <script type="text/javascript" src="control/actions.js"></script>
+    <script type="text/javascript" src="control/editButton.js"></script>
+    <script type="text/javascript" src="control/legend.js"></script>
+    <script type="text/javascript" src="control/backgroundSelect.js"></script>
+    <script type="text/javascript" src="control/description.js"></script>
+    <script type="text/javascript" src="control/configuration.js"></script>
+
+    <script type="text/javascript" src="data/dataManager.js"></script>
+    <script type="text/javascript" src="data/dataSource.js"></script> 
+    <script type="text/javascript" src="data/dataSourcePolygon.js"></script> 
+    <script type="text/javascript" src="data/dataSourcePolyline.js"></script> 
+    <script type="text/javascript" src="data/dataSourcePoint.js"></script> 
+    <script type="text/javascript" src="data/defaultParams.js"></script>
+    <script type="text/javascript" src="data/sourceGroup.js"></script>
+    <script type="text/javascript" src="data/config.js"></script>
+    <script type="text/javascript" src="data/icon.js"></script>
+    <script type="text/javascript" src="data/buttonViz.js"></script>
+    <script type="text/javascript" src="data/background.js"></script>
+    <script type="text/javascript" src="data/dataSourceOSM.js"></script> 
+    <script type="text/javascript" src="data/descriptionParams.js"></script> 
+
+    <script type="text/javascript" src="main/main.js"></script> 
+
+    <script>
+        SimpleGIS.Main.Main.init("map", "config");
+    </script>
+</html>

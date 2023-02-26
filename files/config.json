@@ -1,0 +1,1010 @@
+{
+	"params": {
+		"editModeEnable": true,
+		"default": {
+			"zoom": 11,
+			"position": [45.201997785641, 5.77108383178711],
+			"fullscreenControl": true,
+			"marker": {
+				"color": "#338F38",
+				"icon": {
+					"type": "font",
+					"value": "fa-sharp  fa-solid fa-location-dot",
+					"anchorType": "bottom"
+				}
+			},
+			"vizReference" : "recharges"
+		},
+		"description" :  {
+			"title" : "Visualisation Grenoble",
+			"html" : "Exemple d'utilisation du logiciel à partir de données de la ville de Grenoble et de données d'OpenStreetMap.",
+			"creator" : "SimpleGis",
+			"creatorWebsite" : "http://www.datavizdev.fr/"
+		}
+	},
+	"buttonViz": [{
+			"name": "Vélos",
+			"reference": "velos",
+			"description": "Visualisation des pistes cyclable avec parkings",
+			"icon": {
+				"type": "font",
+				"value": "fa-solid fa-person-biking"
+			},
+			"sources": [
+				"aires-service-velo",
+				"stationnement-cyclable",
+				"cyclables-gresivaudan",
+				"pistes-cyclabes",
+				"pistes-cyclables-pays-voironnais"
+			],
+			"sourcesOSM" : [
+				"test-osm"
+			]
+		},
+		{
+			"name": "Vélos voies",
+			"reference": "velos-voies",
+			"description": "Visualisation des pistes cyclable sans parkings",
+			"icon": {
+				"type": "font",
+				"value": "fa-solid fa-bicycle"
+			},
+			"sources": [
+				"cyclables-gresivaudan",
+				"pistes-cyclabes",
+				"pistes-cyclables-pays-voironnais"
+			]
+		},
+		{
+			"name": "Parkings",
+			"reference": "parkings",
+			"description": "Visualisation des parkings",
+			"icon": {
+				"type": "font",
+				"value": "fa-solid fa-square-parking"
+			},
+			"sources": [
+				"aire-covoiturage",
+				"autostop-SMMAG",
+				"lieux-de-stationnement",
+				"packing-covoiturage",
+				"parkings-relais-p-r",
+				"parkings",
+				"stationnement-barrette-vdg-epsg4326"
+			]
+		},
+		{
+			"name": "Recharges",
+			"reference": "recharges",
+			"description": "Recharges de véhicules par types",
+			"icon": {
+				"type": "font",
+				"value": "at-icon at-electric-battery-charge"
+			},
+			"sources": [
+				"recharge-gnv",
+				"recharge-gpl",
+				"recharge-hydrogene",
+				"recharge-elec-smmag",
+				"smmag"
+			]
+		},
+		{
+			"name": "Bus",
+			"reference": "bus",
+			"description": "Lignes de Bus",
+			"icon": {
+				"type": "font",
+				"value": "fa-solid fa-bus",
+				"anchorType": "center"
+			},
+			"sources": [
+				"lignes-de-transport-du-reseau-tag",
+				"lignes-de-transport-du-reseau-transports-du-pays-voironnais",
+				"lignes-du-reseau-transisere"
+			]
+		},
+		{
+			"name": "Ville OSM",
+			"reference": "ville-osm",
+			"description": "Données de la ville via OpenStreetMap",
+			"icon": {
+				"type": "font",
+				"value": "fa-solid fa-city",
+				"anchorType": "center"
+			},
+			"sources": [],
+			"sourcesOSM": [
+				"test-osm",
+				"batiment-osm",
+				"line-osm"
+			]
+		},
+		{
+			"name": "Batiments OSM",
+			"reference": "batiments-osm",
+			"description": "Données de la ville via OpenStreetMap",
+			"icon": {
+				"type": "font",
+				"value": "fa-solid fa-tree-city",
+				"anchorType": "center"
+			},
+			"sources": [],
+			"sourcesOSM": [
+				"city-osm"
+			]
+		}
+	],
+	"sourcesGroups": [{
+			"name": "Parking",
+			"reference": "parking"
+		},
+		{
+			"name": "Pistes cyclabes",
+			"reference": "pistes-cyclabes"
+		},
+		{
+			"name": "Bus et tramways",
+			"reference": "bus"
+		},
+		{
+			"name": "Recharges",
+			"reference": "recharge"
+		}
+	],
+	"sources": [{
+			"name": "Aire covoiturage",
+			"reference": "aire-covoiturage",
+			"type": "point",
+			"sourceFile": "files/grenoble/aire_covoiturage.json",
+			"description": "Points des aire de covoiturage",
+			"style": {
+				"color": "#2FA78A",
+				"backgroundColor": "#000000",
+				"icon": {
+					"type": "font",
+					"value": "background-icon fa-solid fa-thumbs-up",
+					"anchorType": "center"
+				}
+			},
+			"popup": {
+				"props": ["id_lieu", "nom_lieu", "proprio"],
+				"bolds": ["nom_lieu"],
+				"italics": ["id_lieu"]
+			},
+			"group": "parking",
+			"autoload": true
+		},
+		{
+			"name": "Aires service velo",
+			"reference": "aires-service-velo",
+			"type": "point",
+			"sourceFile": "files/grenoble/aires-service-velo.json",
+			"description": "Aires des service de velo",
+			"style": {
+				"color": "#115D75",
+				"icon": {
+					"type": "font",
+					"value": "background-icon fa-solid fa-screwdriver-wrench",
+					"anchorType": "center"
+				},
+				"size": 20
+			},
+			"group": "pistes-cyclabes",
+			"autoload": true
+		},
+		{
+			"name": "Autostop SMMAG",
+			"reference": "autostop-SMMAG",
+			"description": "Listes des aire d'autostrop du Syndicat des Mobilités de l'aire Grenobloise",
+			"type": "point",
+			"sourceFile": "files/grenoble/autostop_SMMAG.json",
+			"style": {
+				"color": "#C9336D",
+				"icon": {
+					"type": "svg",
+					"value": "libs/remixIcon-svg/Device/battery-fill.svg",
+					"anchorType": "center"
+				}
+			},
+			"group": "parking",
+			"autoload": false
+		},
+		{
+			"name": "Cyclables gresivaudan",
+			"reference": "cyclables-gresivaudan",
+			"type": "polyline",
+			"sourceFile": "files/grenoble/cyclables-gresivaudan.json",
+			"description": "Tracé des pistes cyclables du gresivaudan",
+			"autoload": false,
+			"group": "pistes-cyclabes",
+			"style": {
+				"weight": 3,
+				"color": "#A3C970"
+			},
+			"customStyles": [{
+				"prop": "type",
+				"values": [{
+						"value": "voieverte",
+						"style": {
+							"color": "#A3C970"
+						}
+					},
+					{
+						"value": "veloamenage",
+						"style": {
+							"color": "#70C9C6"
+						}
+					},
+					{
+						"value": "velononamenage",
+						"style": {
+							"color": "#70A1C9"
+						}
+					},
+					{
+						"value": "velodifficile",
+						"style": {
+							"color": "#C9A722"
+						}
+					}
+				]
+			}]
+		},
+		{
+			"name": "Inventaire aires de livraison",
+			"reference": "inventaire-aires-de-livraison-grenoble-alpes-metropole",
+			"type": "point",
+			"sourceFile": "files/grenoble/inventaire-aires-de-livraison-grenoble-alpes-metropole.geojson",
+			"description": "Inventaire des aires de livraison de la métropole de grenoble alpes",
+			"group": "pistes-cyclabes",
+			"autoload": false
+		},
+		{
+			"name": "Lieux de stationnement",
+			"reference": "lieux-de-stationnement",
+			"type": "point",
+			"sourceFile": "files/grenoble/Lieux-de-stationnement.json",
+			"description": "Lieux de stationnement",
+			"style": {
+				"color": "#C9A133",
+				"icon": {
+					"type": "font",
+					"value": "background-icon fa-solid fa-square-parking",
+					"anchorType": "center"
+				}
+			},
+			"group": "parking",
+			"autoload": false
+		},
+		{
+			"name": "Lignes de transport du reseau tag",
+			"reference": "lignes-de-transport-du-reseau-tag",
+			"type": "polyline",
+			"sourceFile": "files/grenoble/lignes-de-transport-du-reseau-tag.json",
+			"description": "Lignes de transport du réseau tag",
+			"style": {
+				"weight": 3
+			},
+			"customStyles": [{
+				"type": "variable",
+				"prop": "COULEUR",
+				"propStyle": "color",
+				"value": "rgb(${0})",
+				"valueType": "text"
+			}],
+			"group": "bus",
+			"autoload": false
+		},
+		{
+			"name": "Lignes de transport du reseau transports du pays voironnais",
+			"reference": "lignes-de-transport-du-reseau-transports-du-pays-voironnais",
+			"type": "polyline",
+			"sourceFile": "files/grenoble/lignes-de-transport-du-reseau-transports-du-pays-voironnais.json",
+			"description": "Lignes de transport du reseau de transports du pays voironnais",
+			"style": {
+				"weight": 3
+			},
+			"customStyles": [{
+				"type": "variable",
+				"prop": "COULEUR",
+				"propStyle": "color",
+				"value": "rgb(${0})",
+				"valueType": "text"
+			}],
+			"group": "bus",
+			"autoload": false
+		},
+		{
+			"name": "Lignes du reseau transisere",
+			"reference": "lignes-du-reseau-transisere",
+			"type": "polyline",
+			"sourceFile": "files/grenoble/lignes-du-reseau-transisere.json",
+			"description": "Lignes du reseau transisere",
+			"style": {
+				"weight": 3
+			},
+			"customStyles": [{
+				"type": "variable",
+				"prop": "COULEUR",
+				"propStyle": "color",
+				"value": "rgb(${0})",
+				"valueType": "text"
+			}],
+			"group": "bus",
+			"autoload": false
+		},
+		{
+			"name": "Packing covoiturage",
+			"reference": "packing-covoiturage",
+			"type": "point",
+			"sourceFile": "files/grenoble/packing_covoiturage.json",
+			"description": "Packing de covoiturage",
+			"autoload": false,
+			"style": {
+				"color": "#33C964",
+				"icon": {
+					"type": "font",
+					"value": "background-icon fa-solid fa-thumbs-up",
+					"anchorType": "center"
+				}
+			},
+			"group": "parking"
+		},
+		{
+			"name": "Parkings relais p-r",
+			"reference": "parkings-relais-p-r",
+			"type": "point",
+			"sourceFile": "files/grenoble/parkings-relais-p-r.json",
+			"description": "Parkings relais p-r",
+			"autoload": false,
+			"style": {
+				"color": "#33C96F",
+				"icon": {
+					"type": "font",
+					"value": "background-icon fa-solid fa-square-parking",
+					"anchorType": "center"
+				}
+			},
+			"group": "parking"
+		},
+		{
+			"name": "Parkings",
+			"reference": "parkings",
+			"type": "point",
+			"sourceFile": "files/grenoble/parkings.json",
+			"autoload": false,
+			"style": {
+				"color": "#33C964",
+				"icon": {
+					"type": "font",
+					"value": "background-icon fa-solid fa-square-parking"
+				},
+				"size": 35
+			},
+			"group": "parking"
+		},
+		{
+			"name": "Pistes cyclabes",
+			"reference": "pistes-cyclabes",
+			"type": "polyline",
+			"sourceFile": "files/grenoble/pistes-cyclabes.json",
+			"autoload": false,
+			"style": {
+				"weight": 3
+			},
+			"customStyles": [{
+				"prop": "type",
+				"values": [{
+						"value": "voieverte",
+						"style": {
+							"color": "#A2D661"
+						}
+					},
+					{
+						"value": "veloamenage",
+						"style": {
+							"color": "#70C9C6"
+						}
+					},
+					{
+						"value": "velononamenage",
+						"style": {
+							"color": "#70A1C9"
+						}
+					},
+					{
+						"value": "velodifficile",
+						"style": {
+							"color": "#C9A722"
+						}
+					}
+				]
+			}],
+			"group": "pistes-cyclabes"
+		},
+		{
+			"name": "Pistes cyclables pays voironnais",
+			"reference": "pistes-cyclables-pays-voironnais",
+			"type": "polyline",
+			"sourceFile": "files/grenoble/pistes-cyclables-pays-voironnais.json",
+			"autoload": false,
+			"style": {
+				"weight": 3
+			},
+			"customStyles": [{
+				"prop": "type",
+				"values": [{
+						"value": "voieverte",
+						"style": {
+							"color": "#A3C970"
+						}
+					},
+					{
+						"value": "veloamenage",
+						"style": {
+							"color": "#70C9C6"
+						}
+					},
+					{
+						"value": "velononamenage",
+						"style": {
+							"color": "#70A1C9"
+						}
+					},
+					{
+						"value": "velodifficile",
+						"style": {
+							"color": "#C9A722"
+						}
+					}
+				]
+			}],
+			"group": "pistes-cyclabes"
+		},
+		{
+			"name": "Arret bus et tramways Le Grésivaudan",
+			"reference": "arret-bus-et-tramways-le-grésivaudan",
+			"type": "point",
+			"sourceFile": "files/grenoble/Arret-bus-et-tramways-Le-Grésivaudan.json",
+			"group": "bus",
+			"style": {
+				"color": "#88117A"
+			},
+			"autoload": false
+		},
+		{
+			"name": "Arret bus et tramways métropole",
+			"reference": "Arret-bus-et-tramways-metropole",
+			"type": "point",
+			"sourceFile": "files/grenoble/Arret-bus-et-tramways-métropole.json",
+			"group": "bus",
+			"style": {
+				"color": "#3C73CE"
+			},
+			"autoload": false
+		},
+		{
+			"name": "Arret bus et tramways Pays Voironnais",
+			"reference": "arret-bus-et-tramways-pays-voironnais",
+			"type": "point",
+			"sourceFile": "files/grenoble/Arret-bus-et-tramways-Pays-Voironnais.json",
+			"group": "bus",
+			"style": {
+				"color": "#81CE3C"
+			},
+			"autoload": false
+		},
+		{
+			"name": "Arret bus et tramways SMMAG",
+			"reference": "arret-bus-et-tramways-smmag",
+			"type": "point",
+			"sourceFile": "files/grenoble/Arret-bus-et-tramways-SMMAG.json",
+			"group": "bus",
+			"style": {
+				"color": "#CE3C76"
+			},
+			"autoload": false
+		},
+		{
+			"name": "Recharge gnv",
+			"reference": "recharge-gnv",
+			"description": "Ce jeu de données comprend l'ensemble des bornes de recharge pour véhicules GNV sur le territoire du SMMAG (Gaz Naturel)",
+			"type": "point",
+			"sourceFile": "files/grenoble/recharge-gnv.json",
+			"style": {
+				"color": "#164989",
+				"icon": {
+					"type": "font",
+					"value": "background-icon at-icon at-green-gas",
+					"anchorType": "center"
+				},
+				"size": 20
+			},
+			"group": "recharge",
+			"autoload": false
+		},
+		{
+			"name": "Recharge gpl",
+			"reference": "recharge-gpl",
+			"description": "Ce jeu de données comprend l'ensemble des bornes de recharge pour véhicules GPL sur le territoire du SMMAG (mélange d'hydrocarbures légers, essentiellement du propane et du butane)",
+			"type": "point",
+			"sourceFile": "files/grenoble/recharge-gpl.json",
+			"style": {
+				"color": "#164989",
+				"icon": {
+					"type": "font",
+					"value": "background-icon at-icon at-green-can",
+					"anchorType": "center"
+				},
+				"size": 20
+			},
+			"group": "recharge",
+			"autoload": false
+		},
+		{
+			"name": "Recharge hydrogene",
+			"reference": "recharge-hydrogene",
+			"description": "Ce jeu de données comprend l'ensemble des bornes de recharge pour véhicules hydrogène sur le territoire du SMMAG",
+			"type": "point",
+			"sourceFile": "files/grenoble/recharge-hydrogene.json",
+			"style": {
+				"color": "#164989",
+				"icon": {
+					"type": "font",
+					"value": "background-icon at-icon at-green-charge",
+					"anchorType": "center"
+				},
+				"size": 20
+			},
+			"group": "recharge",
+			"autoload": false
+		},
+		{
+			"name": "Recharge elec SMMAG",
+			"reference": "recharge-elec-smmag",
+			"description": "Ce jeu de données comprend l'ensemble des bornes de recharge éléctrique sur le territoire du SMMAG",
+			"type": "point",
+			"sourceFile": "files/grenoble/recharge_elec_SMMAG.json",
+			"group": "recharge",
+			"autoload": false,
+			"style": {
+				"color": "#3209A4",
+				"icon": {
+					"type": "font",
+					"value": "background-icon at-icon at-electric-battery-charge",
+					"anchorType": "center"
+				},
+				"size": 20
+			},
+			"customStyles": [{
+				"prop": "n_operateur",
+				"values": [{
+						"value": "SEDI",
+						"style": {
+							"color": "#238109"
+						}
+					},
+					{
+						"value": "BOUYGUES ENERGIES ET SERVICES",
+						"style": {
+							"color": "#164989"
+						}
+					}
+				]
+			}]
+		},
+		{
+			"name": "Routes",
+			"reference": "routes",
+			"type": "polyline",
+			"sourceFile": "files/grenoble/routes.json",
+			"autoload": false
+		},
+		{
+			"name": "Stationnement barrette VDG EPSG4326",
+			"reference": "stationnement-barrette-vdg-epsg4326",
+			"type": "point",
+			"sourceFile": "files/grenoble/STATIONNEMENT_BARRETTE_VDG_EPSG4326.json",
+			"description": "Barrette de stationnement de la ville",
+			"group": "parking",
+			"autoload": false
+		},
+		{
+			"name": "Stationnement cyclable",
+			"reference": "stationnement-cyclable",
+			"type": "point",
+			"sourceFile": "files/grenoble/stationnementcyclable.json",
+			"style": {
+				"color": "#5B80B6",
+				"icon": {
+					"type": "font",
+					"value": "background-icon fa-solid fa-square-parking",
+					"anchorType": "center"
+				},
+				"size": 20
+			},
+			"customStyles": [{
+				"type": "variable",
+				"prop": "capacite",
+				"propStyle": "size",
+				"value": "17+${0}/40",
+				"valueType": "number"
+			}],
+			"group": "pistes-cyclabes",
+			"autoload": false
+		},
+		{
+			"name": "Zone arret transport en commun",
+			"reference": "zone-arret-transport-en-commun",
+			"type": "point",
+			"sourceFile": "files/grenoble/zone-arret-transport-en-commun.json",
+			"group": "bus",
+			"autoload": false
+		},
+		{
+			"name": "SMMAG",
+			"reference": "smmag",
+			"type": "polygon",
+			"sourceFile": "files/grenoble/SMMAG.json",
+			"autoload": false,
+			"style": {
+				"color": "#2A9C37",
+				"fillColor": "#2A9C37",
+				"weight": 1,
+				"fillOpacity": 0.4
+			},
+			"customStyles": [{
+				"prop": "bassin_air",
+				"values": [{
+					"value": "Bassin_Grenoble",
+					"style": {
+						"color": "#2A9C7A",
+						"fillColor": "#74CDB4",
+						"weight": 2,
+						"fillOpacity": 0.5
+					}
+				}]
+			}]
+		}
+	],
+	"sourcesOSM": [
+		{
+			"name": "testOSM",
+			"reference": "test-osm",
+			"type": "point",
+			"content" : [
+				"tourism"
+			],
+			"group": "recharge",
+			"autoload": false,
+			"city": "3600080348",
+			"style": {
+				"color": "#267175",
+				"icon": {
+					"type": "font",
+					"value": "background-icon fa-solid fa-suitcase",
+					"anchorType": "center"
+				},
+				"size": 20
+			},
+			"customStyles": [{
+				"prop": "tourism",
+				"values": [{
+					"value": "hotel",
+					"style": {
+						"color": "#3986C1",
+						"icon": {
+							"type": "font",
+							"value": "background-icon fa-solid fa-hotel",
+							"anchorType": "center"
+						},
+						"size": 20
+					}
+				},
+				{
+					"value": "artwork",
+					"style": {
+						"color": "#C18739",
+						"icon": {
+							"type": "font",
+							"value": "background-icon ri-gallery-line",
+							"anchorType": "center"
+						},
+						"size": 16
+					}
+				},
+				{
+					"value": "picnic_site",
+					"style": {
+						"color": "#3D89A3",
+						"icon": {
+							"type": "font",
+							"value": "background-icon fa-solid fa-cookie-bite",
+							"anchorType": "center"
+						},
+						"size": 20
+					}
+				},
+				{
+					"value": "information",
+					"style": {
+						"color": "#3D89A3",
+						"icon": {
+							"type": "font",
+							"value": "background-icon fa-solid fa-circle-info",
+							"anchorType": "center"
+						},
+						"size": 16
+					}
+				},
+				{
+					"value": "viewpoint",
+					"style": {
+						"color": "#D89443",
+						"icon": {
+							"type": "font",
+							"value": "background-icon fa-solid fa-mountain-sun",
+							"anchorType": "center"
+						},
+						"size": 20
+					}
+				},
+				{
+					"value": "gallery",
+					"style": {
+						"color": "#39C19B",
+						"icon": {
+							"type": "font",
+							"value": "background-icon fa-solid fa-palette",
+							"anchorType": "center"
+						},
+						"size": 20
+					}
+				},
+				{
+					"value": "museum",
+					"style": {
+						"color": "#39C19B",
+						"icon": {
+							"type": "font",
+							"value": "background-icon fa-solid fa-building-columns",
+							"anchorType": "center"
+						},
+						"size": 20
+					}
+				},
+				{
+					"value": "apartment",
+					"style": {
+						"color": "#398AC1",
+						"icon": {
+							"type": "font",
+							"value": "background-icon fa-solid fa-building",
+							"anchorType": "center"
+						},
+						"size": 20
+					}
+				}]
+			}]
+		},
+		{
+			"name": "batimentOSM",
+			"reference": "batiment-osm",
+			"type": "polygon",
+			"content" : [
+				"'building'"
+			],
+			"group": "recharge",
+			"autoload": false,
+			"bbox" : "45.1705, 5.7074, 45.1843, 5.7395",
+			"style": {
+				"color": "#B2631E",
+				"fillColor": "#B2631E",
+				"weight": 1,
+				"fillOpacity": 0.4
+			},
+			"customStyles": [{
+				"prop": "building:levels",
+				"values": [{
+					"value": 7,
+					"condition" : ">=",
+					"style": {
+						"color": "#B2431E",
+						"fillColor": "#B2431E",
+						"weight": 1,
+						"fillOpacity": 0.6
+					}
+				},
+				{
+					"value": 15,
+					"condition" : ">=",
+					"style": {
+						"color": "#82180F",
+						"fillColor": "#82180F",
+						"weight": 1,
+						"fillOpacity": 0.7
+					}
+				}]
+			}]
+		},
+		{
+			"name": "lineOSM",
+			"reference": "line-osm",
+			"type": "polyline",
+			"content" : [
+				"'highway'='primary'",
+				"'highway'='unclassified'",
+				"'highway'='residential'",
+				"'highway'='tertiary'"
+			],
+			"group": "recharge",
+			"autoload": false,
+			"city": "3600080348",
+			"style": {
+				"color": "#339090",
+				"weight": 2
+			},
+			"customStyles": [{
+				"prop": "highway",
+				"values": [{
+					"value": "primary",
+					"style": {
+						"color": "#6D39C1",
+						"weight": 4
+					}
+				},
+				{
+					"value": "tertiary",
+					"style": {
+						"color": "#C15239",
+						"weight": 3
+					}
+				},
+				{
+					"value": "residential",
+					"style": {
+						"color": "#339090",
+						"weight": 2
+					}
+				}]
+			}]
+		},
+		{
+			"name": "cityOSM",
+			"reference": "city-osm",
+			"type": "polygon",
+			"content" : [
+				"'building' = 'hotel'",
+				"'building' = 'government'",
+				"'building' = 'school'",
+				"'building' = 'industrial'",
+				"'building' = 'office'"
+			],
+			"group": "recharge",
+			"autoload": false,
+			"city": "3600080348",
+			"style": {
+				"color": "#ffffff",
+				"fillColor": "#ffffff",
+				"weight": 1,
+				"fillOpacity": 0.5
+			},
+			"customStyles": [{
+				"prop": "building",
+				"values": [{
+					"value": "hotel",
+					"condition" : "=",
+					"style": {
+						"color": "#3AE33B",
+						"fillColor": "#3AE33B"
+					}
+				},
+				{
+					"value": "government",
+					"condition" : "=",
+					"style": {
+						"color": "#3AE1E3",
+						"fillColor": "#3AE1E3"
+					}
+				},
+				{
+					"value": "school",
+					"condition" : "=",
+					"style": {
+						"color": "#A33AE3",
+						"fillColor": "#A33AE3"
+					}
+				},
+				{
+					"value": "industrial",
+					"condition" : "=",
+					"style": {
+						"color": "#E3783A",
+						"fillColor": "#E3783A"
+					}
+				},
+				{
+					"value": "office",
+					"condition" : "=",
+					"style": {
+						"color": "#3A61E3",
+						"fillColor": "#3A61E3"
+					}
+				}]
+			}],
+			"popup": {
+				"props": ["building"],
+				"bolds": ["building"],
+				"italics": []
+			}
+		}
+	],
+	"backgrounds": [{
+			"name": "OpenStreetMap",
+			"type": "tile",
+			"url": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+			"params": {
+				"noWrap": true,
+				"attribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+			}
+		},
+		{
+			"name": "OpenTopoMap",
+			"type": "tile",
+			"url": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+			"params": {
+				"noWrap": true,
+				"attribution": "Map data: &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, <a href='http://viewfinderpanoramas.org'>SRTM</a> | Map style: &copy; <a href='https://opentopomap.org'>OpenTopoMap</a> (<a href='https://creativecommons.org/licenses/by-sa/3.0/'>CC-BY-SA</a>)"
+			}
+		},
+		{
+			"name": "Esri WorldGrayCanvas",
+			"type": "tile",
+			"url": "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+			"params": {
+				"noWrap": true,
+				"attribution": "Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ"
+			}
+		},
+		{
+			"name": "CartoDB Positron",
+			"type": "tile",
+			"url": "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+			"params": {
+				"noWrap": true,
+				"attribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='https://carto.com/attributions'>CARTO</a>",
+				"subdomains": "abcd"
+			}
+		},
+		{
+			"name": "CartoDB PositronNoLabels",
+			"type": "tile",
+			"url": "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+			"params": {
+				"noWrap": true,
+				"attribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='https://carto.com/attributions'>CARTO</a>",
+				"subdomains": "abcd"
+			}
+		},
+		{
+			"name": "CartoDB DarkMatterNoLabels",
+			"type": "tile",
+			"url": "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
+			"params": {
+				"noWrap": true,
+				"attribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='https://carto.com/attributions'>CARTO</a>",
+				"subdomains": "abcd"
+			}
+		},
+		{
+			"name": "ArcGIS",
+			"type": "tile",
+			"url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+			"params": {
+				"noWrap": true,
+				"attribution": ""
+			}
+		}
+	]
+}

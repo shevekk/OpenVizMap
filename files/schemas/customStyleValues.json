@@ -1,0 +1,20 @@
+{
+  "$id": "https://example.com/customStyleValues.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "customStyleValues",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "string",
+      "description": "Valeur de la condition"
+    },
+    "condition": {
+      "type": "string",
+      "description": "Type de condition : '=', '!=', '<', '<=', '>=', '>', 'include' (par defaut : '=')"
+    },
+    "style": {
+      "$ref" : "http://localhost/SimpleGIS/src/files/schemas/sourceStyle.json",
+      "description": "Style appliqué si la condition est valide"
+    }
+  }
+}

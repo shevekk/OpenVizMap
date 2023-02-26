@@ -1,0 +1,35 @@
+{
+  "$id": "https://example.com/customStyle.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "customStyle",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Type de custom : 'variable' basé sur des variable ou 'prop' basé sur pes propriétés (prop par defaut))"
+    },
+    "prop": {
+      "type": "string",
+      "description": "Propriété cible du layer"
+    },
+    "propStyle": {
+      "type": "string",
+      "description": "Quel propriété du style est impacté par la variable (ex : 'color') - si type = 'variable'"
+    },
+    "value": {
+      "type": "string",
+      "description": "Valeur de la propriété, le ${0} sera remplacer par la valeur du layer - si type = 'variable'"
+    },
+    "valueType": {
+      "type": "string",
+      "description": "Type de valeur, number ou texte - si type = 'variable'"
+    },
+    "values": {
+      "type": "array",
+      "description": "Tableau des valeur que peut prendre la propriété - si type = 'prop'",
+      "items": {
+        "$ref" : "http://localhost/SimpleGIS/src/files/schemas/customStyleValues.json"
+      }
+    }
+  }
+}

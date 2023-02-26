@@ -1,0 +1,24 @@
+{
+  "$id": "https://example.com/descriptionParams.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "descriptionParams",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Titre de la fenêtre de la description"
+    },
+    "html": {
+      "type": "string",
+      "description": "Contenu HTML de la description"
+    },
+    "creator": {
+      "type": "string",
+      "description": "Nom du createur de la représentation"
+    },
+    "creator_website": {
+      "type": "string",
+      "description": "Lien vers le site du createur"
+    }
+  }
+}

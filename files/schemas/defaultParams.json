@@ -1,0 +1,28 @@
+{
+  "$id": "https://example.com/defaultParams.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "defaultParams",
+  "type": "object",
+  "properties": {
+    "zoom": {
+      "type": "number",
+      "description": "Niveau de zoom par défaut"
+    },
+    "position": {
+      "type": "array",
+      "description": "Position par defaut de la carte (lat et long)"
+    },
+    "fullscreenControl": {
+      "type": "boolean",
+      "description": "Affichage du bouton permettant de mettre la carte en plein écran"
+    },
+    "marker": {
+      "$ref" : "http://localhost/SimpleGIS/src/files/schemas/markerStyle.json",
+      "description": "Style par défaut de tout les markers (surchargé par les paramètres de la source)"
+    },
+    "vizReference": {
+      "type": "string",
+      "description": "Reference of the defult Viz"
+    }
+  }
+}

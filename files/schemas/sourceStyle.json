@@ -1,0 +1,32 @@
+{
+  "$id": "https://example.com/sourceStyle.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "sourceStyle",
+  "type": "object",
+  "properties": {
+    "color": {
+      "type": "string",
+      "description": "Couleur en rgb ou hexa"
+    },
+    "icon": {
+      "$ref" : "http://localhost/SimpleGIS/src/files/schemas/icon.json",
+      "description": "Paramètres de l'icône du marker - pour point"
+    },
+    "size": {
+      "type": "array/number",
+      "description": "Taille de l'icône sous frome de nombre si type='font' ou tableau x/y si type='svg' - pour point"
+    },
+    "fillColor": {
+      "type": "string",
+      "description": "Couleur du fond - pour polygon"
+    },
+    "weight": {
+      "type": "number",
+      "description": "Epaisseur (taille du trait) - pour polygon, polyline"
+    },
+    "fillOpacity": {
+      "type": "number",
+      "description": "Opacité du fond"
+    }
+  }
+}

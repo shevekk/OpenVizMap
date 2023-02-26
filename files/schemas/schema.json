@@ -1,0 +1,40 @@
+{
+  "$id": "https://example.com/schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "default": {
+      "$ref" : "http://localhost/SimpleGIS/src/files/schemas/params.json",
+      "description": "Tableau des paramètres principaux"
+    },
+    "buttonViz": {
+      "type": "array",
+      "description": "Tableau des buttons de visualisation",
+      "items": {
+        "$ref" : "http://localhost/SimpleGIS/src/files/schemas/buttonViz.json"
+      }
+    },
+    "sourcesGroups": {
+      "type": "array",
+      "description": "Tableau des grounds de sources (pour layer select)",
+      "items": {
+        "$ref" : "http://localhost/SimpleGIS/src/files/schemas/sourcesGroup.json"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "description": "Tableau des sources de données et design",
+      "items": {
+        "$ref" : "http://localhost/SimpleGIS/src/files/schemas/source.json"
+      }
+    },
+    "backgrounds": {
+      "type": "array",
+      "description": "Tableau des backgrounds",
+      "items": {
+        "$ref" : "http://localhost/SimpleGIS/src/files/schemas/background.json"
+      }
+    }
+  }
+}

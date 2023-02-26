@@ -1,0 +1,24 @@
+{
+  "$id": "https://example.com/background.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "background",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nom d'affichage"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type de background (tile)"
+    },
+    "url": {
+      "type": "string",
+      "description": "Url du background"
+    },
+    "params": {
+      "$ref" : "http://localhost/SimpleGIS/src/files/schemas/backgroundParams.json",
+      "description": "Parametres du background"
+    }
+  }
+}

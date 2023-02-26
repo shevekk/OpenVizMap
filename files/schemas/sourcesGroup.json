@@ -1,0 +1,16 @@
+{
+  "$id": "https://example.com/sourcesGroup.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "sourceGroup",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nom du groupe (affichage)"
+    },
+    "reference": {
+      "type": "string",
+      "description": "Réference du groupe (utiliser pour liens)"
+    }
+  }
+}

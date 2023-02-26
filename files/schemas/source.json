@@ -1,0 +1,51 @@
+{
+  "$id": "https://example.com/source.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "source",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nom de la source"
+    },
+    "reference": {
+      "type": "string",
+      "description": "Réference de la source"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type de source (type de données géographique) - point, polygon, polyline"
+    },
+    "sourceFile": {
+      "type": "string",
+      "description": "Url local ou en ligne du fichier geojson"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description des données de la source"
+    },
+    "style": {
+      "$ref" : "http://localhost/SimpleGIS/src/files/schemas/sourceStyle.json",
+      "description": "Style de tout les éléments de la source"
+    },
+    "popup": {
+      "$ref" : "http://localhost/SimpleGIS/src/files/schemas/popup.json",
+      "description": "Paramétrage de la popup"
+    },
+    "customStyles" : {
+      "type": "array",
+      "items": {
+        "$ref" : "http://localhost/SimpleGIS/src/files/schemas/customStyle.json"
+      },
+      "description": "Style personnalisé appliqué selon le paramétrage et les valeurs des propriétés du ficheir geojson"
+    },
+    "group": {
+      "type": "string",
+      "description": "Reférence du groupe"
+    },
+    "autoload": {
+      "type": "boolean",
+      "description": "Si activé chargement et affichage automatique de la source à l'ouverture de la carte"
+    }
+  }
+}

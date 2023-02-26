@@ -1,0 +1,20 @@
+{
+  "$id": "https://example.com/params.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "params",
+  "type": "object",
+  "properties": {
+    "editModeEnable": {
+      "type": "boolean",
+      "description": "Le mode d'édition est actif ('false' = mode visualisation uniquement)"
+    },
+    "default": {
+      "$ref" : "http://localhost/SimpleGIS/src/files/schemas/defaultParams.json",
+      "description": "Paramètre par défaut de visualisation"
+    },
+    "description": {
+      "$ref" : "http://localhost/SimpleGIS/src/files/schemas/descriptionParams.json",
+      "description": "Paramètre de la description (affiché dans une pop-up)"
+    }
+  }
+}

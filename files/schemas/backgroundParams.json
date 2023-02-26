@@ -1,0 +1,15 @@
+{
+  "$id": "https://example.com/backgroundParams.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "backgroundParams",
+  "type": "object",
+  "properties": {
+    "noWrap": {
+      "type": "boolean"
+    },
+    "attribution": {
+      "type": "string",
+      "description": "Texte en bas de la carte d'attribution"
+    }
+  }
+}

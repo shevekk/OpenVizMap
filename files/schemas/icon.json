@@ -1,0 +1,20 @@
+{
+  "$id": "https://example.com/icon.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "icon",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Type d'icône svg ou font"
+    },
+    "value": {
+      "type": "string",
+      "description": "Valeur de l'icône (url de l'image ou classes css)"
+    },
+    "anchorType": {
+      "type": "string",
+      "description": "PLacement de l'icône (center ou buttom)"
+    }
+  }
+}
