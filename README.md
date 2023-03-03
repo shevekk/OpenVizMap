@@ -7,3 +7,7 @@ Visualisation de données urbaines (restaurants, parkings, ...), de point d'int�
 
 Le logiciel permet de personnaliser le design des éléments (points, polygones, lignes) à partir de propriétés.
 Il permet de définir des boutons chargeant les couches choisies et d'afficher une legend décrivant à ses couches.
+
+Exemple pour la carte de la ville de Grenoble en mode édition : http://www.datavizdev.fr/OpenVizMap/Grenoble/
+
+Exemple pour la carte de la ville de Grenoble en mode visualisation : http://www.datavizdev.fr/OpenVizMap/GrenobleViz/
