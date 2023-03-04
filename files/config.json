@@ -13,12 +13,12 @@
 					"anchorType": "bottom"
 				}
 			},
-			"vizReference" : "recharges"
+			"vizReference" : "velos"
 		},
 		"description" :  {
 			"title" : "Visualisation Grenoble",
 			"html" : "Exemple d'utilisation du logiciel à partir de données de la ville de Grenoble et de données d'OpenStreetMap.",
-			"creator" : "SimpleGis",
+			"creator" : "OpenVizMap",
 			"creatorWebsite" : "http://www.datavizdev.fr/"
 		}
 	},
@@ -36,9 +36,6 @@
 				"cyclables-gresivaudan",
 				"pistes-cyclabes",
 				"pistes-cyclables-pays-voironnais"
-			],
-			"sourcesOSM" : [
-				"test-osm"
 			]
 		},
 		{
@@ -105,25 +102,9 @@
 			]
 		},
 		{
-			"name": "Ville OSM",
-			"reference": "ville-osm",
-			"description": "Données de la ville via OpenStreetMap",
-			"icon": {
-				"type": "font",
-				"value": "fa-solid fa-city",
-				"anchorType": "center"
-			},
-			"sources": [],
-			"sourcesOSM": [
-				"test-osm",
-				"batiment-osm",
-				"line-osm"
-			]
-		},
-		{
-			"name": "Batiments OSM",
+			"name": "Bâtiments OSM",
 			"reference": "batiments-osm",
-			"description": "Données de la ville via OpenStreetMap",
+			"description": "Données des types de bâtiments d'OpenStreetMap",
 			"icon": {
 				"type": "font",
 				"value": "fa-solid fa-tree-city",
@@ -132,6 +113,34 @@
 			"sources": [],
 			"sourcesOSM": [
 				"city-osm"
+			]
+		},
+		{
+			"name": "Tourisme OSM",
+			"reference": "batiments-osm",
+			"description": "Données liées au tourisme d'OpenStreetMap",
+			"icon": {
+				"type": "font",
+				"value": "fa-solid fa-suitcase",
+				"anchorType": "center"
+			},
+			"sources": [],
+			"sourcesOSM": [
+				"tourisme-osm"
+			]
+		},
+		{
+			"name": "Ou manger ?",
+			"reference": "eat-osm",
+			"description": "Données liées aux lieux de restauration d'OpenStreetMap",
+			"icon": {
+				"type": "font",
+				"value": "fa-solid fa-utensils",
+				"anchorType": "center"
+			},
+			"sources": [],
+			"sourcesOSM": [
+				"eat-osm"
 			]
 		}
 	],
@@ -151,6 +160,11 @@
 			"name": "Recharges",
 			"reference": "recharge"
 		}
+		,
+		{
+			"name": "Open Street Map",
+			"reference": "osm"
+		}
 	],
 	"sources": [{
 			"name": "Aire covoiturage",
@@ -160,12 +174,13 @@
 			"description": "Points des aire de covoiturage",
 			"style": {
 				"color": "#2FA78A",
-				"backgroundColor": "#000000",
+				"backgroundColor": "#ffffff",
 				"icon": {
 					"type": "font",
 					"value": "background-icon fa-solid fa-thumbs-up",
 					"anchorType": "center"
-				}
+				},
+				"size": 19
 			},
 			"popup": {
 				"props": ["id_lieu", "nom_lieu", "proprio"],
@@ -200,12 +215,14 @@
 			"type": "point",
 			"sourceFile": "files/grenoble/autostop_SMMAG.json",
 			"style": {
-				"color": "#C9336D",
+				"color": "#2F9FA7",
+				"backgroundColor": "#ffffff",
 				"icon": {
-					"type": "svg",
-					"value": "libs/remixIcon-svg/Device/battery-fill.svg",
+					"type": "font",
+					"value": "background-icon fa-solid fa-thumbs-up",
 					"anchorType": "center"
-				}
+				},
+				"size": 19
 			},
 			"group": "parking",
 			"autoload": false
@@ -347,7 +364,8 @@
 					"type": "font",
 					"value": "background-icon fa-solid fa-thumbs-up",
 					"anchorType": "center"
-				}
+				},
+				"size" : 19
 			},
 			"group": "parking"
 		},
@@ -670,13 +688,13 @@
 	],
 	"sourcesOSM": [
 		{
-			"name": "testOSM",
-			"reference": "test-osm",
+			"name": "Tourisme OSM",
+			"reference": "tourisme-osm",
 			"type": "point",
 			"content" : [
 				"tourism"
 			],
-			"group": "recharge",
+			"group": "osm",
 			"autoload": false,
 			"city": "3600080348",
 			"style": {
@@ -795,7 +813,7 @@
 			"content" : [
 				"'building'"
 			],
-			"group": "recharge",
+			"group": "osm",
 			"autoload": false,
 			"bbox" : "45.1705, 5.7074, 45.1843, 5.7395",
 			"style": {
@@ -838,7 +856,7 @@
 				"'highway'='residential'",
 				"'highway'='tertiary'"
 			],
-			"group": "recharge",
+			"group": "osm",
 			"autoload": false,
 			"city": "3600080348",
 			"style": {
@@ -871,7 +889,7 @@
 			}]
 		},
 		{
-			"name": "cityOSM",
+			"name": "bâtiments OSM",
 			"reference": "city-osm",
 			"type": "polygon",
 			"content" : [
@@ -881,7 +899,7 @@
 				"'building' = 'industrial'",
 				"'building' = 'office'"
 			],
-			"group": "recharge",
+			"group": "osm",
 			"autoload": false,
 			"city": "3600080348",
 			"style": {
@@ -938,6 +956,110 @@
 				"bolds": ["building"],
 				"italics": []
 			}
+		},
+		{
+			"name": "Lieux de restauration OSM",
+			"reference": "eat-osm",
+			"type": "point",
+			"content" : [
+				"'amenity' = 'restaurant'",
+				"'amenity' = 'fast_food'",
+				"'amenity' = 'cafe'",
+				"'amenity' = 'pub'",
+				"'amenity' = 'bar'",
+				"'shop' = 'bakery'"
+			],
+			"group": "osm",
+			"autoload": false,
+			"city": "3600080348",
+			"style": {
+				"color": "#267175",
+				"icon": {
+					"type": "font",
+					"value": "background-icon fa-solid fa-suitcase",
+					"anchorType": "center"
+				},
+				"size": 20
+			},
+			"customStyles": [{
+				"prop": "amenity",
+				"values": [{
+					"value": "restaurant",
+					"style": {
+						"color": "#6F63CF",
+						"backgroundColor": "#ffffff",
+						"icon": {
+							"type": "font",
+							"value": "background-icon fa-solid fa-utensils",
+							"anchorType": "center"
+						},
+						"size": 18
+					}
+				},
+				{
+					"value": "fast_food",
+					"style": {
+						"color": "#2D48C3",
+						"icon": {
+							"type": "font",
+							"value": "background-icon fa-solid fa-burger",
+							"anchorType": "center"
+						},
+						"size": 18
+					}
+				},
+				{
+					"value": "cafe",
+					"style": {
+						"color": "#2DA4C3",
+						"icon": {
+							"type": "font",
+							"value": "background-icon fa-solid fa-mug-hot",
+							"anchorType": "center"
+						},
+						"size": 18
+					}
+				},
+				{
+					"value": "pub",
+					"style": {
+						"color": "#2DC3B1",
+						"icon": {
+							"type": "font",
+							"value": "background-icon fa-solid fa-beer-mug-empty",
+							"anchorType": "center"
+						},
+						"size": 18
+					}
+				},
+				{
+					"value": "bar",
+					"style": {
+						"color": "#43D890",
+						"icon": {
+							"type": "font",
+							"value": "background-icon fa-solid fa-martini-glass-citrus",
+							"anchorType": "center"
+						},
+						"size": 18
+					}
+				}]
+			},
+			{
+				"prop": "shop",
+				"values": [{
+					"value": "bakery",
+					"style": {
+						"color": "#C3732D",
+						"icon": {
+							"type": "font",
+							"value": "background-icon at-icon at-fresh-bread",
+							"anchorType": "center"
+						},
+						"size": 18
+					}
+				}]
+			}]
 		}
 	],
 	"backgrounds": [{

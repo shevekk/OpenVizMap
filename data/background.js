@@ -34,6 +34,6 @@ SimpleGIS.Data.Background = class Background
     this.url = json['url'];
     this.params = new SimpleGIS.Data.BackgroundParams(json['params']);
 
-    this.params["attribution"] = `<a href="http://www.datavizdev.fr/OpenVizMap">OpenVizMap</a> | ${this.params["attribution"]}`;
+    this.params["attribution"] = `<a href="http://www.datavizdev.fr/OpenVizMap.html">OpenVizMap</a> | ${this.params["attribution"]}`;
   }
 }
