@@ -32,7 +32,7 @@ SimpleGIS.Control.Legend = L.Control.extend({
     this.contentDiv = L.DomUtil.create('div', 'control-legend-content', this.div);
 
     let descriptionViz = L.DomUtil.create('div', '', this.contentDiv);
-    descriptionViz.innerHTML = `<i>${description}</i>`;
+    descriptionViz.innerHTML = `<i>${description.replaceAll("\n", "<br/>")}</i>`;
 
     // Content Legende
     let sourceDiv = [];
@@ -53,7 +53,7 @@ SimpleGIS.Control.Legend = L.Control.extend({
 
         if(sources[i].description) {
           let description = L.DomUtil.create('p', '', contentLayerDiv);
-          description.innerHTML = `${sources[i].description}`;
+          description.innerHTML = `${sources[i].description.replaceAll("\n", "<br/>")}`;
         }
 
         // Add styles
@@ -115,20 +115,29 @@ SimpleGIS.Control.Legend = L.Control.extend({
     if(styleParams) {
       if(styleParams.fillColor) {
         if(styleParams.fillColor.startsWith("#") && styleParams.fillOpacity) {
-          styleCustom.style["background-color"] = styleParams.fillColor + (styleParams.fillOpacity * 100).toString(16);
+          //styleCustom.style["backgroundColor"] = styleParams.fillColor + (parseInt(styleParams.fillOpacity) * 100).toString(16).toString("00");
+          let opacity = (parseFloat(styleParams.fillOpacity) * 100).toString(16);
+          opacity = opacity.length == 2 ? opacity : opacity + "0";
+          styleCustom.style["backgroundColor"] = styleParams.fillColor + opacity;
         }
         else {
-          styleCustom.style["background-color"] = styleParams.fillColor;
+          styleCustom.style["backgroundColor"] = styleParams.fillColor;
         }
       }
+
+      /*
       if(styleParams.weight) {
-        styleCustom.style["border-width"] = styleCustom.weight;
+        styleCustom.style["borderWidth"] = styleCustom.weight + "px";
       }
       if(styleParams.color) {
-        styleCustom.style["border-color"] = styleCustom.color;
+        styleCustom.style["borderColor"] = styleCustom.color;
+      }
+      */
+      if(styleParams.weight && styleParams.color) {
+        styleCustom.style["border"] = styleParams.weight + "px solid " + styleParams.color;
       }
 
-      if(!styleParams.color && !styleParams.fillColo) {
+      if(!styleParams.color && !styleParams.fillColor) {
         styleDiv.style["display"] = "none";
       }
     }
@@ -266,9 +275,11 @@ SimpleGIS.Control.Legend = L.Control.extend({
       }
 
       var icons = this.div.getElementsByClassName("fa-angle-down");
-      do {
-        icons[0].className = "fa-solid fa-angle-up";
-      } while(icons.length > 0)
+      if(icons.length > 0) {
+        do {
+          icons[0].className = "fa-solid fa-angle-up";
+        } while(icons.length > 0)
+      }
     }
     else {
       iconOpenAll.className = "fa-regular fa-square-caret-down control-legend-hide";
@@ -281,9 +292,11 @@ SimpleGIS.Control.Legend = L.Control.extend({
       }
 
       var icons = this.div.getElementsByClassName("fa-angle-up");
-      do {
-        icons[0].className = "fa-solid fa-angle-down";
-      } while(icons.length > 0)
+      if(icons.length > 0) {
+        do {
+          icons[0].className = "fa-solid fa-angle-down";
+        } while(icons.length > 0)
+      }
     }
   },
 

@@ -88,7 +88,7 @@ SimpleGIS.Data.DataSource = class DataSource
     
     me.layer.eachLayer(function (subLayer) {
       
-      let text = "<p style='font-size: 10px;'>";
+      let text = `<p style="font-size: 10px;">`;
 
       if(me.popupParams) {
         for(let i = 0; i < me.popupParams.props.length; i++) {
@@ -114,12 +114,12 @@ SimpleGIS.Data.DataSource = class DataSource
       }
       else {
         Object.keys(subLayer.feature.properties).forEach(key => {
-            text += key + " : " + subLayer.feature.properties[key] + "<br/>";
+            text += key + " : " + subLayer.feature.properties[key] + `<br/>`;
         });
       }
 
-      text += "</p>"
-      
+      text += `</p>`;
+
       subLayer.bindPopup(text);
     });
   }
@@ -179,7 +179,7 @@ SimpleGIS.Data.DataSource = class DataSource
       }
       else if(condition.condition.toLowerCase() == "include")
       {
-        if(layerProperties && layerProperties.include(condition.value)) {
+        if(layerProperties && layerProperties.includes(condition.value)) {
           conditionValid = true;
         }
       }

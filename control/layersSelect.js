@@ -98,7 +98,7 @@ SimpleGIS.Control.LayersSelect = L.Control.extend({
 
     let divTitle = L.DomUtil.create('div', 'control-sourceSelect-group-title', this.divGroups[this.divGroups.length - 1]);
     let divTitleIcon = L.DomUtil.create('i', 'fa-solid fa-angle-up', divTitle);
-    this.checkboxGroups[groupRef] = L.DomUtil.create('input', '', divTitle);
+    this.checkboxGroups[groupRef] = L.DomUtil.create('input', 'control-sourceSelect-title-input', divTitle);
     this.checkboxGroups[groupRef].type = "checkbox";
     let divTitleText = L.DomUtil.create('h3', '', divTitle);
     divTitleText.innerHTML = groupName;
@@ -261,7 +261,9 @@ SimpleGIS.Control.LayersSelect = L.Control.extend({
    */
   updateCheckState(reference, checkedState) 
   {
-    this.checkbox[reference].checked = checkedState;
+    if(this.checkbox[reference]) {
+      this.checkbox[reference].checked = checkedState;
+    }
   },
 
   /*

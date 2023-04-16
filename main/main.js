@@ -11,7 +11,7 @@ if (typeof SimpleGIS.Main == 'undefined') {
  */
 SimpleGIS.Main.Main = class Main
 {
-  /*
+  /**
    * Init the software
    * @param {string} - divNameHtml - Html name of the map div
    * @param {string} - fileName - Name of the config file to load
@@ -40,7 +40,7 @@ SimpleGIS.Main.Main = class Main
     }
   }
 
-  /*
+  /**
    * Create the content, control and display
    * @param {string} - divNameHtml - Name of the div
    * @param {string} - dataFileName - Name of the file
@@ -51,8 +51,14 @@ SimpleGIS.Main.Main = class Main
     
     this.dataManager = new SimpleGIS.Data.DataManager(this.dataFileName);
     this.isLocalStorage = dataFileName == "";
+
     this.dataManager.loadConfig(this.isLocalStorage).then(dataConfig => {
       /* @param {SimpleGIS.Data.Config} - dataConfig */
+
+      // If mobile change resolution
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        this.dataManager.editModeEnable = false;
+      }
 
       let defaultParams = dataConfig.defaultParams;
 
@@ -93,7 +99,7 @@ SimpleGIS.Main.Main = class Main
       this.controlActions.init();
       for(let i = 0; i < dataConfig.buttonViz.length; i++) {
         let buttonViz = dataConfig.buttonViz[i];
-        this.controlActions.addButton(buttonViz.name, buttonViz.icon.type, buttonViz.icon.value, buttonViz.description, buttonViz.sources, buttonViz.sourcesOSM);
+        this.controlActions.addButton(buttonViz.name, buttonViz.reference, buttonViz.icon.type, buttonViz.icon.value, buttonViz.description, buttonViz.sources, buttonViz.sourcesOSM);
       }
       this.controlActions.addTo(this.mapManager.map);
       
@@ -124,6 +130,8 @@ SimpleGIS.Main.Main = class Main
         if(viz) {
           this.mapManager.spin(false);
           SimpleGIS.Main.Main.enableViz(viz.sources, viz.sourcesOSM, viz.description);
+
+          document.getElementById(`buttonViz|${viz.reference}`).style = "color:#C58F22;background-color: #F4ECDD";
         }
       }
     });
@@ -139,7 +147,7 @@ SimpleGIS.Main.Main = class Main
     document.addEventListener("enable-viz", (e) => {SimpleGIS.Main.Main.enableViz(e.detail.sourcesReferences, e.detail.sourcesReferencesOSM, e.detail.description)});
   }
 
-  /*
+  /**
    * Reload UI for layer selection
    * @param {SimpleGIS.Data.Config} - dataConfig
    * @param {string[]} - checkedReferences
@@ -148,8 +156,8 @@ SimpleGIS.Main.Main = class Main
   {
     let dataSources = dataConfig.dataSources;
 
-    let dataSourcesNamesWithNoGroup = dataSources.filter(el => el.group == null).flatMap((element) => element.name);
-    let dataSourcesReferencesWithNoGroup = dataSources.filter(el => el.group == null).flatMap((element) => element.reference);
+    let dataSourcesNamesWithNoGroup = dataSources.filter(el => el.group == null || el.group == "").flatMap((element) => element.name);
+    let dataSourcesReferencesWithNoGroup = dataSources.filter(el => el.group == null || el.group == "").flatMap((element) => element.reference);
     if(this.controlLayersSelect) {
       this.mapManager.map.removeControl(this.controlLayersSelect);
     }
@@ -167,8 +175,8 @@ SimpleGIS.Main.Main = class Main
 
     // Add dataSourcesOSM
     let dataSourcesOSM = dataConfig.dataSourcesOSM;
-    let dataSourcesOSMNamesWithNoGroup = dataSourcesOSM.filter(el => el.group == null).flatMap((element) => element.name);
-    let dataSourcesOSMReferencesWithNoGroup = dataSourcesOSM.filter(el => el.group == null).flatMap((element) => element.reference);
+    let dataSourcesOSMNamesWithNoGroup = dataSourcesOSM.filter(el => el.group == null || el.group == "").flatMap((element) => element.name);
+    let dataSourcesOSMReferencesWithNoGroup = dataSourcesOSM.filter(el => el.group == null || el.group == "").flatMap((element) => element.reference);
     this.controlLayersSelect.addOthersSources(dataSourcesOSMNamesWithNoGroup, dataSourcesOSMReferencesWithNoGroup, true);
 
     this.controlLayersSelect.addTo(this.mapManager.map);
@@ -179,7 +187,7 @@ SimpleGIS.Main.Main = class Main
     this.controlActions.init();
     for(let i = 0; i < dataConfig.buttonViz.length; i++) {
       let buttonViz = dataConfig.buttonViz[i];
-      this.controlActions.addButton(buttonViz.name, buttonViz.icon.type, buttonViz.icon.value, buttonViz.description, buttonViz.sources, buttonViz.sourcesOSM);
+      this.controlActions.addButton(buttonViz.name, buttonViz.reference, buttonViz.icon.type, buttonViz.icon.value, buttonViz.description, buttonViz.sources, buttonViz.sourcesOSM);
     }
     this.controlActions.addTo(this.mapManager.map);
 
@@ -188,14 +196,14 @@ SimpleGIS.Main.Main = class Main
       this.mapManager.map.removeControl(this.controlConfiguration);
     }
     this.controlConfiguration = new SimpleGIS.Control.Configuration();
-    this.controlConfiguration.init(dataConfig.fileContent, this.isLocalStorage);
+    this.controlConfiguration.init(dataConfig.fileContent, this.isLocalStorage, this.mapManager);
     this.controlConfiguration.addTo(this.mapManager.map);
 
     // Update description
     this.controlDescription.updateDescriptionObs(dataConfig.description);
   }
 
-  /*
+  /**
    * Load a new layer 
    * @param {string} - reference - The reference of the layer
    * @param {bool} - isOSM - True if is a OSM source
@@ -277,7 +285,7 @@ SimpleGIS.Main.Main = class Main
     });
   }
 
-  /*
+  /**
    * Change the edit Mode (show or hide controls)
    * @param {bool} - editMode - Edit mode
    */
@@ -304,7 +312,7 @@ SimpleGIS.Main.Main = class Main
     }
   }
 
-  /*
+  /**
    * Show the legend control
    * @param {string[]} - sourcesReferences - List of references of sources
    * @param {string[]} - sourcesReferencesOSM - List of references of OSM sources
@@ -329,6 +337,10 @@ SimpleGIS.Main.Main = class Main
     this.controlLegend = new SimpleGIS.Control.Legend(); 
     this.controlLegend.init(sources, description);
     this.controlLegend.addTo(this.mapManager.map);
+
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      legendHidden = true;
+    }
 
     if(legendHidden) {
       this.controlLegend.changeVisibility(this.controlLegend.contentDiv, this.controlLegend.iconChangeVisibility, this.controlLegend.iconOpenAll);
@@ -356,7 +368,7 @@ SimpleGIS.Main.Main = class Main
     return argsValues;
   }
 
-  /*
+  /**
    * Show the legend control
    * @param {object} - background - Background object
    */
@@ -367,7 +379,7 @@ SimpleGIS.Main.Main = class Main
     this.mapManager.addTile(tile);
   }
 
-  /*
+  /**
    * Show the legend control
    * @param {string[]} - sourcesReferences - List of references of sources
    * @param {string[]} - sourcesReferencesOSM - List of references of OSM sources

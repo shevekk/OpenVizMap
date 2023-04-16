@@ -25,15 +25,17 @@ SimpleGIS.Control.Actions = L.Control.extend({
   /*
    * Add a new button
    * @param {string} - name
+   * @param {string} - reference
    * @param {string} - iconType
    * @param {string} - iconValue
    * @param {string} - description
    * @param {string[]} - sources - List of sources reference
    * @param {string[]} - sourcesOSM - List of sources OSM reference
    */
-  addButton(name, iconType, iconValue, description, sources, sourcesOSM) {
+  addButton(name, reference, iconType, iconValue, description, sources, sourcesOSM) {
     this.buttons.push(L.DomUtil.create('a', 'action-button ' + iconValue, this.div));
     this.buttons[this.buttons.length - 1].title = description;
+    this.buttons[this.buttons.length - 1].id = `buttonViz|${reference}`;
 
     let selectedButton = this.buttons[this.buttons.length - 1];
 
@@ -52,7 +54,7 @@ SimpleGIS.Control.Actions = L.Control.extend({
     for(let key in this.buttons) {
       this.buttons[key].style = "";
     }
-    targetButton.style = "color:#C58F22;background-color: #F4ECDD"
+    targetButton.style = "color:#C58F22;background-color: #F4ECDD";
 
     document.dispatchEvent(new CustomEvent('enable-viz', {detail: {sourcesReferences : sources, sourcesReferencesOSM : sourcesOSM, description : description}}));
   },

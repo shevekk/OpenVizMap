@@ -1,7 +1,24 @@
-﻿body
+﻿/*  */
+*html {
+
+}
+
+body
 {
 	height: 100%;
 	overflow: hidden;margin: 0;
+
+  color : #000000;
+}
+
+h2 {
+  font-size : 150%;
+  font-weight : 600;
+}
+
+h3 {
+  font-size : 120%;
+  font-weight : 600;
 }
 
 #map {
@@ -31,7 +48,9 @@
   margin-bottom: 0px;
 }
 
+/*****************************/
 /* Source management control */
+/*****************************/
 .control-sourceSelect-group {
   margin-bottom: 7px;
 }
@@ -52,7 +71,6 @@
   background-color: #97CCEC;
 }
 
-
 .control-sourceSelect-group-title h3 {
   margin-left: 4px;
   margin-bottom: 0px;
@@ -64,7 +82,12 @@
 }
 
 .control-sourceSelect-line {
-  
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-select-layer-name {
+  margin-left: 4px;
 }
 
 /* Checkbox of a Layer */
@@ -89,9 +112,13 @@
   border-radius: 5px;
 }
 
+.control-sourceSelect-title-input {
+  margin-left: 4px;
+}
+
 /******************/
 /* Legend Control */
-
+/******************/
 .legend-control {
   padding: 5px;
   min-width: 400px;
@@ -163,8 +190,6 @@
 }
 
 .control-legend-layer-content {
-  /* border-bottom: 2px solid black; */
-  /* background-color: #DFE5EB; */
 }
 
 .control-legend-layer-content p {
@@ -215,7 +240,9 @@
   display: none;
 }
 
+/**********************/
 /* Background control */
+/**********************/
 .background-control {
   width: 320px;
   text-align: center;
@@ -269,6 +296,7 @@
   background-color: #ABCEDE;
 }
 
+/* Autocomplete for backgrounds */
 .autocomplete-items {
   position: absolute;
   border: 1px solid #d4d4d4;
@@ -299,8 +327,9 @@
   color: #ffffff;
 }
 
-
+/***************/
 /* Description */
+/***************/
 .popup-container-description  {
   visibility: hidden;
   opacity: 0;
@@ -375,8 +404,9 @@
   background-color: #287085;
 }
 
-
+/************************************/
 /* Design for configuration control */
+/************************************/
 .popup-container-configuration {
   visibility: hidden;
   opacity: 0;
@@ -395,20 +425,18 @@
 .footer-configuration {
   display: flex;
   flex-direction: row;
-  /* justify-content: flex-end; */
   justify-content: space-between;
 
   margin-top: 6px;
 }
 
-
 .textArea-configuration {
-  height: 40em
+  height: 40em;
+  width : 100%;
 }
 
 .inner-container-configuration {
-    width: 55em;
-    /*height: 22em;*/
+    width: 56em;
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -417,36 +445,18 @@
     border-radius: 4px;
 }
 
-.btn-configuration {
-  float: right;
-  
-  cursor: pointer;
-}
-
+/* Boutons bottom */
 .configuration-localStorage-state {
   float: left;
+  display: flex;
   border-radius: 7px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 13px;
+  padding-right: 13px;
   padding-top: 6px;
   padding-bottom: 6px;
 
-  background-color: #B88C3A;
-  border: 1px solid #654A15;
-}
-
-.btn-configuration {
-  min-width: 5em;
-  font-family: Oxygen, sans-serif;
-  font-size: 15px;
-  margin: 0 2px 0 2px;
-  border: 0;
-  cursor: pointer;
-  color: #fff;
-  background-color: #287085;
-  text-decoration: none;
-  padding: 8px;
-  border-radius: 6px;
+  align-items: center;
+  background-color: #ffe08a;
 }
 
 .btn-reload-configuration {
@@ -457,14 +467,207 @@
   background-color: #399F44;
 }
 
-.btn-suppr-configuration{
-  background-color: #B62C2C;
-}
-
 .btn-download-configuration {
   background-color: #379B9A;
 }
 
 .btn-close-configuration {
   background-color: #ED5959;
+}
+
+#btn-suppr-configuration {
+  background-color: #B62C2C;
+  color : #5B1111;
+}
+
+#btn-suppr-configuration:hover {
+  color : #000000;
+}
+
+#configuration-content {
+  border-bottom : 2px solid #838383;
+}
+
+.header-configuration {
+    margin: 0 25px 0 25px;
+    padding: 5px;
+    font-family: Oxygen, sans-serif;
+    font-size: 22px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+/* Config fieldset */
+.fieldset {
+  display: block;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-top: 0.35em;
+  padding-bottom: 0.625em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  border: 2px dotted black; 
+}
+
+.config-page-content {
+  height: 600px;
+  overflow: auto;
+}
+
+.radio {
+  color: #363636;
+}
+
+.navbar-item-selected {
+  background-color : #3E71A9;
+}
+
+.config-list-title {
+  cursor: pointer;
+}
+
+.navbar-item {
+  text-decoration: none;
+}
+
+.message a:not(.button):not(.tag):not(.dropdown-item) {
+  text-decoration: none;
+}
+
+/* Display icon in config */
+.config-display-icon {
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 22px;
+}
+
+.config-display-icon-img {
+  padding: 5px;
+  border-radius: 4px;
+  max-width: 30px;
+  max-height: 30px;
+}
+
+.config-style-display-polygon {
+  width: 25px;
+  height: 25px;
+  border : 1px solid black;
+}
+
+.config-style-display-polyline {
+  width: 40px;
+  height: 2px;
+}
+
+/* Config source custom style design */
+.config-source-customStyle-value-nav-add {
+  cursor: point;
+}
+
+.config-customStyle-value-delete {
+  margin-left: 3px;
+}
+
+.config-source-customStyle-value-navbar {
+  flex-flow: row wrap;
+}
+
+.config-source-customStyle-navbar {
+  flex-flow: row wrap;
+}
+
+.config-customStyle-delete {
+  margin-left: 3px;
+}
+
+.config-source-customStyle-div-content {
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid #0000004d;
+}
+
+.config-source-customStyle-value-content-div {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 7px;
+  padding-top: 7px;
+}
+
+.config-source-customStyle-div {
+  padding-top: 7px;
+}
+
+.config-source-customStyle-content-div {
+  border: 1px solid #0000004d;
+  padding-bottom: 7px;
+}
+
+.message.is-info {
+  margin-bottom: 15px;
+}
+
+/* Config source filter */
+.config-source-filter-line {
+  display: flex;
+  align-items: center;
+}
+
+/* Config source popup prop */
+.config-source-popup-props-line {
+  display: flex;
+  align-items: center;
+}
+
+.config-source-popup-bold {
+  margin-left: 7px;
+}
+
+.config-source-popup-italic {
+  margin-left: 7px;
+}
+
+.config-source-popup-bold-label {
+  color : #000000;
+  margin-left: 2px;
+}
+
+.config-source-popup-italic-label {
+  color : #000000;
+  margin-left: 2px;
+}
+
+.config-source-popup-enable-label {
+  color : #000000;
+  margin-left: 4px;
+}
+
+/* config list design */
+#config-list-add {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/* Manage smartphone - background */
+@media (max-width: 1100px) {
+  .background-control {
+    max-width : 100%;
+  }
+
+  .leaflet-top.leaflet-right {
+    max-width :60%;
+  }
+}
+
+/* Manage smartphone - legend */
+@media (max-width: 900px) {
+  .leaflet-bottom {
+    width : 94%;
+  }
+
+  .legend-control {
+    width : 100%;
+    max-width : 100%;
+    min-width : 100%;
+  }
+
 }

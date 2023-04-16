@@ -20,7 +20,7 @@ SimpleGIS.Data.Config = class Config
 		this.defaultParams = defaultParams;
 		this.sourcesGroups = sourcesGroups;
 		this.buttonViz = buttonViz;
-    	this.backgrounds = backgrounds;
-    	this.description = description;
+  	this.backgrounds = backgrounds;
+  	this.description = description;
 	}
 }

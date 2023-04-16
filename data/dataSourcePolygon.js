@@ -31,6 +31,10 @@ SimpleGIS.Data.DataSourcePolygon = class DataSourcePolygon extends SimpleGIS.Dat
 
     me.layer.eachLayer(function (subLayer) {
       if(me.style) {
+        if(me.style.weight == "0") {
+          me.style.weight = 0;
+        }
+
         subLayer.setStyle(me.style);
       }
 
@@ -54,7 +58,7 @@ SimpleGIS.Data.DataSourcePolygon = class DataSourcePolygon extends SimpleGIS.Dat
             }
 
             let styleObj = {};
-            if(valueProp && me.customStyles[i].propStyle) {
+            if((valueProp || valueProp == 0) && me.customStyles[i].propStyle) {
               styleObj[me.customStyles[i].propStyle] = valueProp;
               subLayer.setStyle(styleObj);
             }

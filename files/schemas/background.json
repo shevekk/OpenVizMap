@@ -8,6 +8,10 @@
       "type": "string",
       "description": "Nom d'affichage"
     },
+    "reference": {
+      "type": "string",
+      "description": "reference du background"
+    },
     "type": {
       "type": "string",
       "description": "Type de background (tile)"

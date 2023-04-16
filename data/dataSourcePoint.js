@@ -170,7 +170,8 @@ SimpleGIS.Data.DataSourcePoint = class DataSource extends SimpleGIS.Data.DataSou
       icon = this.icons.find(i => i.options.iconSize[0] == size && i.options.iconAnchor[0] == anchor[0] && i.options.iconAnchor[1] == anchor[1] && i.options.popupAnchor[0] == popupAnchor[0] && i.options.popupAnchor[1] == popupAnchor[1] && i.options.html == html);
     }
     else {
-      icon = this.icons.find(i => i.options.iconSize == size && i.options.popupAnchor[0] == popupAnchor[0]  && i.options.popupAnchor[1] == popupAnchor[1] && i.options.iconUrl == iconValue && i.options.color == color);
+      //icon = this.icons.find(i => i.options.iconSize == size && i.options.popupAnchor[0] == popupAnchor[0]  && i.options.popupAnchor[1] == popupAnchor[1] && i.options.iconUrl == iconValue && i.options.color == color);
+      icon = this.icons.find(i => i.options.iconSize[0] == size && i.options.popupAnchor[0] == popupAnchor[0]  && i.options.popupAnchor[1] == popupAnchor[1] && i.options.iconUrl == iconValue && i.options.color == color);
     }
 
     return icon;
@@ -200,12 +201,27 @@ SimpleGIS.Data.DataSourcePoint = class DataSource extends SimpleGIS.Data.DataSou
       });
     }
     else {
-      icon = L.colorIcon({
-        iconSize : size,
-        popupAnchor : popupAnchor,
-        iconUrl: window.location.href.split("?")[0] + "/" + iconValue,
-        color: color
-      });
+      if(backgroundColor) {
+        let size2 = parseInt(size) + 2;
+        icon = L.colorIcon({
+          iconSize : [size, size],
+          popupAnchor : popupAnchor,
+          iconUrl: window.location.href.split("?")[0] + "/" + iconValue,
+          color: color,
+          shadowUrl: window.location.href.split("?")[0] + "/" + "img/background_icon.svg",
+          shadowColor: backgroundColor,
+          shadowSize: [size2, size2],
+          shadowAnchor: popupAnchor
+        });
+      }
+      else {
+        icon = L.colorIcon({
+          iconSize : [size, size],
+          popupAnchor : popupAnchor,
+          iconUrl: window.location.href.split("?")[0] + "/" + iconValue,
+          color: color
+        });
+      }
     }
 
     this.icons.push(icon);

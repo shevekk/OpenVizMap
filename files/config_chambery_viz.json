@@ -1,6 +1,6 @@
 {
   "params": {
-    "editModeEnable": true,
+    "editModeEnable": false,
     "default": {
       "zoom": "13",
       "position": [

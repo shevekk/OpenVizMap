@@ -24,6 +24,7 @@ SimpleGIS.Data.Background = class Background
    * @params{Object} - json - Config datas to read
    * @property{string} - type - Type (tile)
    * @property{string} - name - Display name
+   * @property{string} - reference - Reference
    * @property{string} - url - Url of the tiles
    * @property{SimpleGIS.Data.BackgroundParams} - params - Params of the background
    */
@@ -31,6 +32,7 @@ SimpleGIS.Data.Background = class Background
   {
     this.type = json['type'];
     this.name = json['name'];
+    this.reference = json['reference'];
     this.url = json['url'];
     this.params = new SimpleGIS.Data.BackgroundParams(json['params']);
 
