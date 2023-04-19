@@ -1,13 +1,16 @@
 # OpenVizMap
 
-OpenVizMap est un logiciel de création de cartes web interactive, destiner à mettre en valeur des données en OpenData.
-Il permet de charger des fichiers geojson et des données OpenStreetMap, à partir d'un fichier de configuration.
+OpenVizMap is a software for creating interactive web maps, intended to highlight OpenData. It allows to load geojson files and OpenStreetMap data.
 
-Visualisation de données urbaines (restaurants, parkings, ...), de point d'intérêt touristique ou tout autres données afin de les rendre visibles au grand public.
+Visualization of urban data, tourist points of interest or any other data to make them visible to the general public.
 
-Le logiciel permet de personnaliser le design des éléments (points, polygones, lignes) à partir de propriétés.
-Il permet de définir des boutons chargeant les couches choisies et d'afficher une legend décrivant à ses couches.
+The software allows to customize the design of elements (points, polygons, lines) from properties. It allows to define buttons loading the chosen layers and to display a legend describing its layers.
 
-Exemple pour la carte de la ville de Grenoble en mode édition : http://www.datavizdev.fr/OpenVizMap/Grenoble/
 
-Exemple pour la carte de la ville de Grenoble en mode visualisation : http://www.datavizdev.fr/OpenVizMap/GrenobleViz/
+Example for the map of the city of Chambéry in editing mode : http://www.datavizdev.fr/openvizmap/exemple_v3/
+
+Example for the map of the city of Chambéry in visualization mode : http://www.datavizdev.fr/openvizmap/exemple_v3/?config=config_chambery_viz
+
+Example for the map of the city of Grenoble in editing mode : http://www.datavizdev.fr/openvizmap/exemple_v3/?config=config_grenoble
+
+Example for the map of the city of Grenoble in visualization mode : http://www.datavizdev.fr/openvizmap/exemple_v3/?config=config_grenoble_viz
